@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1066315282893",
+    "project_id": "campus-way-c5abf",
+    "storage_bucket": "campus-way-c5abf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066315282893:android:c81ddb46e00081048b6c84",
+        "android_client_info": {
+          "package_name": "com.campus_way.campus_way_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIg9quw1FxzB0cpaBl1_oDzn9KH9tzDBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

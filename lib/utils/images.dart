@@ -1,0 +1,1 @@
+// define the icons and images here and the  call it with static here
