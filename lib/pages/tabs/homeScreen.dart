@@ -42,7 +42,7 @@ class homeScreenTitle extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppConstants.screenHeight(context)/9.8,
+      height: AppConstants.screenHeight(context)/11,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,

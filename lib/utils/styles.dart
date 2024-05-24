@@ -23,7 +23,7 @@ class CategoryContainer extends StatelessWidget{
 
     return SizedBox(
       width: AppConstants.screenWidth(context)/5,
-      height: AppConstants.screenWidth(context)/5,
+      height: AppConstants.screenWidth(context)/4.5,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

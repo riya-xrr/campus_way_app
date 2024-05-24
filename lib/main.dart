@@ -1,16 +1,16 @@
-import 'package:campus_way_app/firebase_options.dart';
-import 'package:campus_way_app/pages/tabs/navbar.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:campus_way_app/auth/SplashScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
+  // Ensure Flutter binding is initialized
+  WidgetsFlutterBinding.ensureInitialized();
 
-  // initializing firebase
-
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,).then(
-  //         (FirebaseApp value) => Get.put(AuthenticationRepository()),
-  // );
+  // Initialize Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(const MyApp());
 }
@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Campus Way',
       theme: ThemeData(
-
+        // Define your theme here
       ),
-      home: const Navbar(),
+      home: SplashScreen(),
     );
   }
 }
