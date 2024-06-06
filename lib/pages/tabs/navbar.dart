@@ -9,14 +9,21 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class Navbar extends StatefulWidget {
-  const Navbar({super.key});
+  final int selectedIndex;
+  Navbar({required this.selectedIndex, super.key});
 
   @override
   State<Navbar> createState() => _NavbarState();
 }
 
 class _NavbarState extends State<Navbar> {
-  int selectedIndex = 0;
+  late int selectedIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = widget.selectedIndex; // Initialize selectedIndex in initState
+  }
 
   final List<Widget> _screens = [
     HomeScreen(),
@@ -24,7 +31,7 @@ class _NavbarState extends State<Navbar> {
     profileScreen(),
   ];
 
-  void _onItemSelected(int index){
+  void _onItemSelected(int index) {
     setState(() {
       selectedIndex = index;
     });
@@ -41,15 +48,14 @@ class _NavbarState extends State<Navbar> {
       body: _screens[selectedIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: AppColors.normal_green,
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(15.0),
-              topRight: Radius.circular(15.0))
+            color: AppColors.normal_green,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15.0),
+                topRight: Radius.circular(15.0))
         ),
-        height: AppConstants.screenHeight(context)/11.5,
+        height: AppConstants.screenHeight(context) / 11.5,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0,
-          vertical: 7),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 7),
           child: GNav(
             backgroundColor: AppColors.normal_green,
             gap: 7,
@@ -86,3 +92,4 @@ class _NavbarState extends State<Navbar> {
     );
   }
 }
+

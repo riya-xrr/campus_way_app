@@ -193,7 +193,7 @@ class _LogInState extends State<LogIn> {
                               );
                               Future.delayed(const Duration(seconds: 3), () {
                                 Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(builder: (context) => Navbar()));
+                                    MaterialPageRoute(builder: (context) => Navbar(selectedIndex: 0,)));
                               });
                             } on FirebaseAuthException catch (e) {
                               switch (e.code) {
@@ -208,8 +208,8 @@ class _LogInState extends State<LogIn> {
                                 msg: message,
                                 toastLength: Toast.LENGTH_LONG,
                                 gravity: ToastGravity.SNACKBAR,
-                                backgroundColor: Colors.black54,
-                                textColor: Colors.white,
+                                backgroundColor: AppColors.grey,
+                                textColor: AppColors.white,
                                 fontSize: 14.0,
                               );
                             }

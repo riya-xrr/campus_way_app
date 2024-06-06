@@ -13,12 +13,235 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 
-class SearchScreen extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  _HomePageState createState() => _HomePageState();
 }
+//
+// class _HomePageState extends State<HomePage> {
+//   String selectedName = '';
+//   double searchLongitude = 0;
+//   double searchLatitude = 0;
+//   LatLng center = LatLng(22.288853465488614, 73.36456359424861);
+//   double zoom = 17;
+//   MapController _mapController = MapController();
+//   bool _showFooter = true;
+//   bool destinationSearched = false;
+//
+//   final double _initFabHeight = 120.0;
+//   double _fabHeight = 0;
+//   double _panelHeightOpen = 0;
+//   double _panelHeightClosed = 0;
+//   late final ScrollController scrollController;
+//   late final PanelController panelController;
+//   late Future<CampusLocation?> locationInfo;
+//
+//   @override
+//   void initState() {
+//     super.initState();
+//     scrollController = ScrollController();
+//     panelController = PanelController();
+//     locationInfo = fetchSearchCampusLocation(selectedName);
+//
+//     _fabHeight = _initFabHeight;
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     _panelHeightOpen = AppConstants.screenHeight(context) / 2.5;
+//     _panelHeightClosed = AppConstants.screenHeight(context) / 7;
+//
+//     return Scaffold(
+//       body: SafeArea(
+//         child: Stack(
+//           alignment: Alignment.topCenter,
+//           children: <Widget>[
+//             SlidingUpPanel(
+//               snapPoint: .5,
+//               disableDraggableOnScrolling: false,
+//               footer: Visibility(
+//                 visible: _showFooter,
+//                 child: SizedBox(
+//                   width: MediaQuery.of(context).size.width,
+//                   height: AppConstants.screenHeight(context) / 11.5,
+//                   child: IgnoreDraggableWidget(
+//                       child: Navbar(
+//                     selectedIndex: 1,
+//                   )),
+//                 ),
+//               ),
+//               header: Visibility(
+//                 visible: destinationSearched,
+//                 child: SizedBox(
+//                   width: MediaQuery.of(context).size.width,
+//                   child: Row(
+//                     mainAxisAlignment: MainAxisAlignment.center,
+//                     children: [
+//                       ForceDraggableWidget(
+//                         child: Column(
+//                           mainAxisSize: MainAxisSize.min,
+//                           children: [
+//                             SizedBox(
+//                               height: 10,
+//                             ),
+//                             Row(
+//                               mainAxisAlignment: MainAxisAlignment.center,
+//                               children: <Widget>[
+//                                 Container(
+//                                   width: AppConstants.screenWidth(context) / 7,
+//                                   height: 5,
+//                                   decoration: BoxDecoration(
+//                                       color: AppColors.normal_green,
+//                                       borderRadius: BorderRadius.all(
+//                                           Radius.circular(5.0))),
+//                                 ),
+//                               ],
+//                             ),
+//                           ],
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//               maxHeight: _panelHeightOpen,
+//               minHeight: _panelHeightClosed,
+//               parallaxEnabled: true,
+//               parallaxOffset: .5,
+//               body: FlutterMap(
+//                 mapController: _mapController,
+//                 options: MapOptions(
+//                   initialCenter: center,
+//                   initialZoom: zoom,
+//                 ),
+//                 children: [
+//                   TileLayer(
+//                     urlTemplate:
+//                         'https://api.mapbox.com/styles/v1/riyaxrr/clwsrb7cz01an01qs24ughtxs/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}',
+//                     additionalOptions: {
+//                       'accessToken':
+//                           'pk.eyJ1Ijoicml5YXhyciIsImEiOiJjbHRyYWdqaXEwZDdyMmtuajJyeml2OXZtIn0.76zhTMUfGNJOrQSigoy9zA',
+//                     },
+//                   ),
+//                   MarkerLayer(
+//                     markers: [
+//                       Marker(
+//                         point: LatLng(
+//                             searchLatitude + 0.0001, searchLongitude + 0.00025),
+//                         // +0.0003
+//                         width: AppConstants.screenWidth(context) / 3,
+//                         height: AppConstants.screenHeight(context) / 10,
+//                         child: Container(
+//                           // color: Colors.amber,
+//                           child: Row(
+//                             children: [
+//                               Icon(
+//                                 Icons.location_on,
+//                                 shadows: <Shadow>[
+//                                   Shadow(
+//                                     offset: Offset(1.0, 1.0),
+//                                     // Offset the shadow slightly
+//                                     blurRadius: 3.0,
+//                                     // Blur the shadow
+//                                     color:
+//                                         AppColors.grey, // Set the shadow color
+//                                   ),
+//                                 ],
+//                                 size: AppConstants.screenHeight(context) / 20,
+//                                 color: AppColors.normal_green,
+//                               ),
+//                               // SizedBox(width: 2,),
+//                               Expanded(
+//                                 child: AutoSizeText(selectedName,
+//                                     minFontSize: 15,
+//                                     maxFontSize: 20,
+//                                     maxLines: 3,
+//                                     overflow: TextOverflow.ellipsis,
+//                                     style: AppTextStyles.semiBold.copyWith(
+//                                       color: AppColors.normal_green,
+//                                       shadows: [
+//                                         Shadow(
+//                                           offset: Offset(0.5, 1.0),
+//                                           // position of the shadow
+//                                           blurRadius: 0.7,
+//                                           // blur effect
+//                                           color: AppColors
+//                                               .grey, // color of the shadow
+//                                         ),
+//                                       ],
+//                                     )),
+//                               ),
+//                             ],
+//                           ),
+//                         ),
+//                       ),
+//                     ],
+//                   )
+//                 ],
+//               ),
+//               controller: panelController,
+//               scrollController: scrollController,
+//               panelBuilder: () => Visibility(
+//                 visible: destinationSearched,
+//                 child: MediaQuery.removePadding(
+//                     context: context,
+//                     removeTop: true,
+//                     child: ListView(
+//                       physics: PanelScrollPhysics(controller: panelController),
+//                       controller: scrollController,
+//                       children: <Widget>[
+//                         SearchCard(
+//                           locationInfoCard: locationInfo,
+//                         ),
+//                       ],
+//                     )),
+//               ),
+//               borderRadius: BorderRadius.only(
+//                   topLeft: Radius.circular(18.0),
+//                   topRight: Radius.circular(18.0)),
+//               onPanelSlide: (double pos) => setState(() {
+//                 _fabHeight = pos * (_panelHeightOpen - _panelHeightClosed) +
+//                     _initFabHeight;
+//               }),
+//             ),
+//             // the fab
+//             Positioned(
+//               right: 20.0,
+//               bottom: _fabHeight + 20,
+//               child: FloatingActionButton(
+//                 child: Icon(
+//                   Icons.gps_fixed,
+//                   color: Theme.of(context).primaryColor,
+//                 ),
+//                 onPressed: () {},
+//                 backgroundColor: Colors.white,
+//               ),
+//             ),
+//             //the SlidingUpPanel Title
+//             searchBar(
+//               onSearch: (String name, double longitude, double latitude) {
+//                 setState(() {
+//                   selectedName = name;
+//                   searchLongitude = longitude;
+//                   searchLatitude = latitude;
+//                   center = LatLng(searchLatitude, searchLongitude);
+//                   zoom = 18.0;
+//                   locationInfo = fetchSearchCampusLocation(selectedName);
+//                   print(locationInfo);
+//                   _showFooter = false;
+//                   destinationSearched = true;
+//                 });
+//                 _mapController.move(center, zoom);
+//               },
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _HomePageState extends State<HomePage> {
   String selectedName = '';
   double searchLongitude = 0;
   double searchLatitude = 0;
@@ -66,8 +289,8 @@ class _SearchScreenState extends State<SearchScreen> {
                   height: AppConstants.screenHeight(context) / 11.5,
                   child: IgnoreDraggableWidget(
                       child: Navbar(
-                        selectedIndex: 1,
-                      )),
+                    selectedIndex: 1,
+                  )),
                 ),
               ),
               header: Visibility(
@@ -117,10 +340,10 @@ class _SearchScreenState extends State<SearchScreen> {
                 children: [
                   TileLayer(
                     urlTemplate:
-                    'https://api.mapbox.com/styles/v1/riyaxrr/clwsrb7cz01an01qs24ughtxs/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}',
+                        'https://api.mapbox.com/styles/v1/riyaxrr/clwsrb7cz01an01qs24ughtxs/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}',
                     additionalOptions: {
                       'accessToken':
-                      'pk.eyJ1Ijoicml5YXhyciIsImEiOiJjbHRyYWdqaXEwZDdyMmtuajJyeml2OXZtIn0.76zhTMUfGNJOrQSigoy9zA',
+                          'pk.eyJ1Ijoicml5YXhyciIsImEiOiJjbHRyYWdqaXEwZDdyMmtuajJyeml2OXZtIn0.76zhTMUfGNJOrQSigoy9zA',
                     },
                   ),
                   Visibility(
@@ -195,7 +418,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         }
                         return ListView(
                           physics:
-                          PanelScrollPhysics(controller: panelController),
+                              PanelScrollPhysics(controller: panelController),
                           controller: scrollController,
                           children: <Widget>[
                             SearchCard(
@@ -272,4 +495,3 @@ Future<CampusLocation?> fetchSearchCampusLocation(String locationName) async {
   }
   return null; // Return null if no document found
 }
-

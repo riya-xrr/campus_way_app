@@ -1,4 +1,4 @@
-import 'package:campus_way_app/auth/login.dart';
+import 'package:campus_way_app/auth/landing_page.dart';
 import 'package:campus_way_app/pages/tabs/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,10 +13,10 @@ class SplashScreen extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         } else if (snapshot.hasData) {
           // User is signed in
-          return Navbar();
+          return Navbar(selectedIndex: 0,);
         } else {
           // User is not signed in
-          return LogIn();
+          return LandingPage();
         }
       },
     );

@@ -38,7 +38,6 @@ dependencies:
   fluttertoast: ^8.2.5
 
   #autoSize
-  auto_size_text_field: ^2.2.2
   auto_size_text: ^3.0.0
 
   #navbar
@@ -47,6 +46,17 @@ dependencies:
   #Firebase
   firebase_core: ^2.31.1
   firebase_auth: ^4.19.6
+  cloud_firestore: ^4.17.4
+  firebase_storage: ^11.7.6
+  cached_network_image: ^3.3.1
+  shimmer: ^3.0.0
+
+  #mapbox
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.1
+
+  #sliding_up
+  sliding_up_panel2: ^3.3.0+1
 
 dev_dependencies:
   flutter_test:
@@ -103,8 +113,18 @@ flutter:
     - assets/category_icons/cic_games_light.png
     - assets/category_icons/cic_libraries_dark.png
     - assets/category_icons/cic_libraries_light.png
+    - assets/category_icons/cic_admincell_dark.png
+    - assets/category_icons/cic_admincell_light.png
+    - assets/category_icons/cic_hostels_dark.png
+    - assets/category_icons/cic_hostels_light.png
+    - assets/category_icons/cic_others_dark.png
+    - assets/category_icons/cic_others_light.png
+    - assets/category_icons/cic_temple_dark.png
+    - assets/category_icons/cic_temple_light.png
     - assets/images/img_belgiumWaffle.jpg
     - assets/images/img_nBlock.jpg
+    - assets/images/no_Selection.png
+    - assets/images/img_map.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

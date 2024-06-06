@@ -259,7 +259,7 @@ class _SignUpState extends State<SignUp> {
                               );
                               Future.delayed(const Duration(seconds: 3), () {
                                 Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(builder: (context) => Navbar()));
+                                    MaterialPageRoute(builder: (context) => Navbar(selectedIndex: 0,)));
                               }
                               );
                             } on FirebaseAuthException catch (e) {
