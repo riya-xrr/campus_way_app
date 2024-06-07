@@ -32,10 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Campus Way',
-      theme: ThemeData(
-        // Define your theme here
-      ),
-      home: profileScreen(),
+      home: Navbar(selectedIndex: 1,),
     );
   }
 }

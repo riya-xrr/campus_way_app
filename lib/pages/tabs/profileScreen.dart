@@ -11,14 +11,16 @@ class profileScreen extends StatefulWidget{
 class _profileScreenState extends State<profileScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        onPressed: () async { await FirebaseAuth.instance.signOut();
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => LogIn()),
-        );},
-        child: Text('Log Out',
-          style: AppTextStyles.semiBold,),
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () async { await FirebaseAuth.instance.signOut();
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => LogIn()),
+          );},
+          child: Text('Log Out',
+            style: AppTextStyles.semiBold,),
+        ),
       ),
     );
   }

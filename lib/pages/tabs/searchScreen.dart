@@ -1,5 +1,4 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:campus_way_app/pages/tabs/navbar.dart';
 import 'package:campus_way_app/services/models/campusLocation.dart';
 import 'package:campus_way_app/utils/colors.dart';
 import 'package:campus_way_app/utils/constants.dart';
@@ -7,7 +6,6 @@ import 'package:campus_way_app/utils/textStyles.dart';
 import 'package:campus_way_app/widgets/features/searchBar.dart';
 import 'package:campus_way_app/widgets/features/searchCard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -49,7 +47,7 @@ class _SearchScreenState extends State<SearchScreen> {
         : AppConstants.screenHeight(context) / 11.5;
     _panelHeightClosed = destinationSearched
         ? AppConstants.screenHeight(context) / 7
-        : AppConstants.screenHeight(context) / 11.5;
+        : 0;
 
     return Scaffold(
       body: SafeArea(
@@ -59,17 +57,17 @@ class _SearchScreenState extends State<SearchScreen> {
             SlidingUpPanel(
               snapPoint: .5,
               disableDraggableOnScrolling: false,
-              footer: Visibility(
-                visible: !destinationSearched,
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: AppConstants.screenHeight(context) / 11.5,
-                  child: IgnoreDraggableWidget(
-                      child: Navbar(
-                        selectedIndex: 1,
-                      )),
-                ),
-              ),
+              // footer: Visibility(
+              //   visible: !destinationSearched,
+              //   child: SizedBox(
+              //     width: MediaQuery.of(context).size.width,
+              //     height: AppConstants.screenHeight(context) / 11.5,
+              //     child: IgnoreDraggableWidget(
+              //         //
+              //       child: SizedBox(),
+              //     ),
+              //   ),
+              // ),
               header: Visibility(
                 visible: destinationSearched,
                 child: SizedBox(
